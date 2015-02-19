@@ -16,5 +16,9 @@ class STFrontViewController < UIViewController
 			controller = STOptionsViewController.alloc.init
 			navigationController.pushViewController(controller, animated:true)
 		end
+
+		STAPI.get_daily do |shortis|
+			puts "#{shortis.count} shortis fetched"
+		end
 	end
 end
