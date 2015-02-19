@@ -3,7 +3,6 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
 
     rootViewController = STFrontViewController.alloc.init
-    rootViewController.title = 'ShortiTest'
 
     navigationController = STNavigationController.alloc.initWithRootViewController(rootViewController)
     @window.rootViewController = navigationController

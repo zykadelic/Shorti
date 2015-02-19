@@ -1,6 +1,8 @@
 class STFrontViewController < UIViewController
 	def init
-		if super;end
+		if super
+			self.title = 'ShortiTest'
+		end
 		self
 	end
 
