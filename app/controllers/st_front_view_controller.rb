@@ -22,9 +22,9 @@ class STFrontViewController < UIViewController
 		# .weak! in the end of the lambda says that self (the controller) will be a weak reference,
 		# in other words dont reference count it, making sure we dont leak memory in a reference loop
 		# Needs to be lambda, not block, because of a RubyMotion bug; .weak! cant be called on blocks
-		STAPI.get_daily(lambda do |response|
+		STAPI.get_daily_channel(lambda do |response|
 			unless response[:error]
-				view.label.text = "#{response[:data].count} shortis fetched. Yay!"
+				view.label.text = "#{response[:data]['shortis'].count} shortis fetched. Yay!"
 			end
 
 			MBProgressHUD.hideHUDForView(view, animated:true)
