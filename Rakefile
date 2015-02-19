@@ -3,6 +3,7 @@ $:.unshift("/Library/RubyMotion/lib")
 require 'motion/project/template/ios'
 require 'rubygems'
 require 'motion-cocoapods'
+require 'motion-settings-bundle'
 
 begin
   require 'bundler'
@@ -18,4 +19,8 @@ Motion::Project::App.setup do |app|
     pod 'AFNetworking'
     pod 'MBProgressHUD', '~> 0.8'
   end
+end
+
+Motion::SettingsBundle.setup do |app|
+  app.multivalue 'Channel', key: 'channel', default: 'dGtvt0Y', values: ['dGtvt0Y', 'sekFgXs', 'InVaLiD'], titles: ['Daily', 'True Explorers', 'Invalid']
 end

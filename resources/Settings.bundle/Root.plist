@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PreferenceSpecifiers</key>
+	<array>
+		<dict>
+			<key>DefaultValue</key>
+			<string>dGtvt0Y</string>
+			<key>Key</key>
+			<string>channel</string>
+			<key>Title</key>
+			<string>Channel</string>
+			<key>Titles</key>
+			<array>
+				<string>Daily</string>
+				<string>True Explorers</string>
+				<string>Invalid</string>
+			</array>
+			<key>Type</key>
+			<string>PSMultiValueSpecifier</string>
+			<key>Values</key>
+			<array>
+				<string>dGtvt0Y</string>
+				<string>sekFgXs</string>
+				<string>InVaLiD</string>
+			</array>
+		</dict>
+	</array>
+	<key>StringsTable</key>
+	<string>Root</string>
+	<key>Title</key>
+	<string>Settings</string>
+</dict>
+</plist>

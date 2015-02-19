@@ -22,8 +22,11 @@ class STFrontViewController < UIViewController
 		# .weak! in the end of the lambda says that self (the controller) will be a weak reference,
 		# in other words dont reference count it, making sure we dont leak memory in a reference loop
 		# Needs to be lambda, not block, because of a RubyMotion bug; .weak! cant be called on blocks
-		STAPI.get_daily_channel(lambda do |response|
-			unless response[:error]
+		STAPI.get_current_channel(lambda do |response|
+			if response[:error]
+				@alert = UIAlertView.alloc.initWithTitle('Could not load channel' , message:'Try choosing a different channel from the settings.', delegate:nil, cancelButtonTitle:nil, otherButtonTitles:nil)
+				@alert.show
+			else
 				shorti = response[:data]['shortis'].first['shorti']
 				view.label.text = shorti['title']
 			end
