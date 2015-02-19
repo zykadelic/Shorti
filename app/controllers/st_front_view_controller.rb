@@ -17,8 +17,8 @@ class STFrontViewController < UIViewController
 			navigationController.pushViewController(controller, animated:true)
 		end
 
-		STAPI.get_daily do |shortis|
-			puts "#{shortis.count} shortis fetched"
+		STAPI.get_daily do |response|
+			puts "#{response[:data].count} shortis fetched"
 		end
 	end
 end
