@@ -17,8 +17,14 @@ class STFrontViewController < UIViewController
 			navigationController.pushViewController(controller, animated:true)
 		end
 
+		MBProgressHUD.showHUDAddedTo(view, animated:true)
+
 		STAPI.get_daily do |response|
-			puts "#{response[:data].count} shortis fetched"
+			unless response[:error]
+				puts "#{response[:data].count} shortis fetched"
+			end
+
+			MBProgressHUD.hideHUDForView(view, animated:true)
 		end
 	end
 end
