@@ -13,7 +13,7 @@ end
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = 'ShortiTest'
+  app.name = 'Shorti Channel'
 
   app.pods do
     pod 'AFNetworking'

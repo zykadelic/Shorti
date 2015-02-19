@@ -1,7 +1,7 @@
 class STFrontViewController < UIViewController
 	def init
 		if super
-			self.title = 'ShortiTest'
+			self.title = 'Shorti Channel'
 		end
 		self
 	end

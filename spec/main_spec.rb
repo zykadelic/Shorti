@@ -1,4 +1,4 @@
-describe "Application 'ShortiTest'" do
+describe "Application 'Shorti Channel'" do
   before do
     @app = UIApplication.sharedApplication
   end
