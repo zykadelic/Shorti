@@ -5,6 +5,8 @@ class AppDelegate
     @window.rootViewController  = navigationController
     @window.makeKeyAndVisible
 
+    STHTTPSessionManager.setup! # setup singleton class
+
     true
   end
 
