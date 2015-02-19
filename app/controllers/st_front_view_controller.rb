@@ -27,7 +27,7 @@ class STFrontViewController < UIViewController
 				@alert = UIAlertView.alloc.initWithTitle('Could not load channel' , message:'Try choosing a different channel from the settings.', delegate:nil, cancelButtonTitle:nil, otherButtonTitles:nil)
 				@alert.show
 			else
-				shorti = response[:data]['shortis'].first['shorti']
+				shorti = response[:data]['channel']['shortis'].first['shorti']
 				view.label.text = shorti['title']
 			end
 
