@@ -24,7 +24,8 @@ class STFrontViewController < UIViewController
 		# Needs to be lambda, not block, because of a RubyMotion bug; .weak! cant be called on blocks
 		STAPI.get_daily_channel(lambda do |response|
 			unless response[:error]
-				view.label.text = "#{response[:data]['shortis'].count} shortis fetched. Yay!"
+				shorti = response[:data]['shortis'].first['shorti']
+				view.label.text = shorti['title']
 			end
 
 			MBProgressHUD.hideHUDForView(view, animated:true)
