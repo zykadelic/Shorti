@@ -13,7 +13,8 @@ class STFrontViewController < UIViewController
 
 	def viewDidLoad
 		view.label.when_tapped do
-			puts 'ping'
+			controller = STOptionsViewController.alloc.init
+			navigationController.pushViewController(controller, animated:true)
 		end
 	end
 end
