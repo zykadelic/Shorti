@@ -12,9 +12,7 @@ class STFrontView < UIView
 			label.sizeToFit
 
 			# Position label on center of screen
-			label_frame = label.frame
-			label_frame.origin = CGPointMake(CGRectGetMidX(contentView.bounds) - label_frame.size.width / 2, CGRectGetMidY(contentView.bounds) - label_frame.size.height / 2)
-			label.frame = label_frame
+			App.delegate.center_view(label, contentView)
 
 			contentView.addSubview(label)
 			addSubview(contentView)
