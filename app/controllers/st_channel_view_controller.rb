@@ -42,8 +42,14 @@ class STChannelViewController < UIViewController
 
 	def tableView(view, cellForRowAtIndexPath: indexPath)
 		@reuseIdentifier ||= 'STChannelCell'
-		cell = view.dequeueReusableCellWithIdentifier(@reuseIdentifier) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: @reuseIdentifier)
-		cell.textLabel.text = @shortis[indexPath.row]['title']
+		cell	= view.dequeueReusableCellWithIdentifier(@reuseIdentifier) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: @reuseIdentifier)
+		shorti	= @shortis[indexPath.row]
+
+		cell.textLabel.text			= shorti['title']
+		# FIXME The position of the image is buggy; jumps slightly to the left on click
+		cell.imageView.contentMode	= UIViewContentModeScaleAspectFit
+		cell.imageView.image		= UIImage.imageNamed('Shorti-thumbnail-placeholder.png')
+		cell.imageView.imageURL		= NSURL.URLWithString(shorti['thumbnail'])
 		cell
 	end
 
