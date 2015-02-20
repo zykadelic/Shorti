@@ -26,6 +26,12 @@
 <constant const='true' declared_type='NSString*' name='AFURLResponseSerializationErrorDomain' type='@'/>
 <constant const='true' declared_type='NSString*' name='AFURLSessionDidInvalidateNotification' type='@'/>
 <constant const='true' declared_type='NSString*' name='AFURLSessionDownloadTaskDidFailToMoveFileNotification' type='@'/>
+<constant const='true' declared_type='NSString*' name='AsyncImageCacheKey' type='@'/>
+<constant const='true' declared_type='NSString*' name='AsyncImageErrorKey' type='@'/>
+<constant const='true' declared_type='NSString*' name='AsyncImageImageKey' type='@'/>
+<constant const='true' declared_type='NSString*' name='AsyncImageLoadDidFail' type='@'/>
+<constant const='true' declared_type='NSString*' name='AsyncImageLoadDidFinish' type='@'/>
+<constant const='true' declared_type='NSString*' name='AsyncImageURLKey' type='@'/>
 <constant const='true' declared_type='NSTimeInterval' name='kAFUploadStream3GSuggestedDelay' type='d'/>
 <constant const='true' declared_type='NSUInteger' name='kAFUploadStream3GSuggestedPacketSize' type='I' type64='Q'/>
 <enum name='AFHTTPRequestQueryStringDefaultStyle' value='0'/>
@@ -1262,6 +1268,108 @@
 <retval declared_type='NSArray*' type='@'/>
 </method>
 </class>
+<class name='AsyncImageLoader'>
+<method selector='URLForTarget:'>
+<arg declared_type='id' index='0' name='target' type='@'/>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='URLForTarget:action:'>
+<arg declared_type='id' index='0' name='target' type='@'/>
+<arg declared_type='SEL' index='1' name='action' type=':'/>
+<retval declared_type='NSURL*' type='@'/>
+</method>
+<method selector='cache'>
+<retval declared_type='NSCache*' type='@'/>
+</method>
+<method selector='cancelLoadingImagesForTarget:'>
+<arg declared_type='id' index='0' name='target' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='cancelLoadingImagesForTarget:action:'>
+<arg declared_type='id' index='0' name='target' type='@'/>
+<arg declared_type='SEL' index='1' name='action' type=':'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='cancelLoadingURL:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='cancelLoadingURL:target:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<arg declared_type='id' index='1' name='target' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='cancelLoadingURL:target:action:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<arg declared_type='id' index='1' name='target' type='@'/>
+<arg declared_type='SEL' index='2' name='action' type=':'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='concurrentLoads'>
+<retval declared_type='NSUInteger' type='I' type64='Q'/>
+</method>
+<method class_method='true' selector='defaultCache'>
+<retval declared_type='NSCache*' type='@'/>
+</method>
+<method selector='loadImageWithURL:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='loadImageWithURL:target:action:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<arg declared_type='id' index='1' name='target' type='@'/>
+<arg declared_type='SEL' index='2' name='action' type=':'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='loadImageWithURL:target:success:failure:'>
+<arg declared_type='NSURL*' index='0' name='URL' type='@'/>
+<arg declared_type='id' index='1' name='target' type='@'/>
+<arg declared_type='SEL' index='2' name='success' type=':'/>
+<arg declared_type='SEL' index='3' name='failure' type=':'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='loadingTimeout'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='setCache:'>
+<arg declared_type='NSCache*' index='0' name='cache' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setConcurrentLoads:'>
+<arg declared_type='NSUInteger' index='0' name='concurrentLoads' type='I' type64='Q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setLoadingTimeout:'>
+<arg declared_type='NSTimeInterval' index='0' name='loadingTimeout' type='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method class_method='true' selector='sharedLoader'>
+<retval declared_type='AsyncImageLoader*' type='@'/>
+</method>
+</class>
+<class name='AsyncImageView'>
+<method selector='activityIndicatorStyle'>
+<retval declared_type='UIActivityIndicatorViewStyle' type='i' type64='q'/>
+</method>
+<method selector='crossfadeDuration'>
+<retval declared_type='NSTimeInterval' type='d'/>
+</method>
+<method selector='setActivityIndicatorStyle:'>
+<arg declared_type='UIActivityIndicatorViewStyle' index='0' name='activityIndicatorStyle' type='i' type64='q'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setCrossfadeDuration:'>
+<arg declared_type='NSTimeInterval' index='0' name='crossfadeDuration' type='d'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setShowActivityIndicator:'>
+<arg declared_type='BOOL' index='0' name='showActivityIndicator' type='B'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='showActivityIndicator'>
+<retval declared_type='BOOL' type='B'/>
+</method>
+</class>
 <class name='MBBarProgressView'>
 <method selector='lineColor'>
 <retval declared_type='UIColor*' type='@'/>
@@ -1796,8 +1904,15 @@
 <method selector='imageResponseSerializer'>
 <retval declared_type='id' type='@'/>
 </method>
+<method selector='imageURL'>
+<retval declared_type='NSURL*' type='@'/>
+</method>
 <method selector='setImageResponseSerializer:'>
 <arg declared_type='id' index='0' name='imageResponseSerializer' type='@'/>
+<retval declared_type='void' type='v'/>
+</method>
+<method selector='setImageURL:'>
+<arg declared_type='NSURL*' index='0' name='imageURL' type='@'/>
 <retval declared_type='void' type='v'/>
 </method>
 <method selector='setImageWithURL:'>

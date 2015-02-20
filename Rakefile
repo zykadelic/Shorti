@@ -17,6 +17,7 @@ Motion::Project::App.setup do |app|
 
   app.pods do
     pod 'AFNetworking'
+    pod 'AsyncImageView'
     pod 'MBProgressHUD', '~> 0.8'
   end
 end
