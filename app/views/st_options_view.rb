@@ -3,13 +3,13 @@ class STOptionsView < UIView
 		if super
 			self.backgroundColor = UIColor.whiteColor
 
-			contentView = UIView.alloc.initWithFrame(App.delegate.navigation_view_rect)
+			contentView = UIView.alloc.initWithFrame(App.delegate.navigationViewRect)
 
 			label = UILabel.alloc.initWithFrame(CGRectZero)
 			label.text = 'My second label'
 			label.textColor = UIColor.blackColor
 			label.sizeToFit
-			App.delegate.center_view(label, contentView)
+			App.delegate.centerView(label, contentView)
 
 			contentView.addSubview(label)
 			addSubview(contentView)

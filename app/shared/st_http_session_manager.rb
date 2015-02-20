@@ -11,8 +11,8 @@ class STHTTPSessionManager < AFHTTPSessionManager
 	# end make singleton
 
 	def init
-		base_url = 'http://shorti.org/api/v2/'
-		if initWithBaseURL(NSURL.URLWithString(base_url));end
+		baseUrl = 'http://shorti.org/api/v2/'
+		if initWithBaseURL(NSURL.URLWithString(baseUrl));end
 		self
 	end
 end

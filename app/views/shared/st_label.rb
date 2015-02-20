@@ -3,6 +3,6 @@ class STLabel < UILabel
 		super
 		self.sizeToFit
 		# Position label on center of screen
-		App.delegate.center_view(self, superview)
+		App.delegate.centerView(self, superview)
 	end
 end

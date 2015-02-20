@@ -11,7 +11,7 @@ class STNavigationController < UINavigationController
 	#	# override
 	# end
 
-	def initWithRootViewController(view_controller)
+	def initWithRootViewController(viewController)
 		if super;end
 		self
 	end
