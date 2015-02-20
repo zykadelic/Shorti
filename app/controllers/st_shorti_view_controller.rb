@@ -1,7 +1,8 @@
 class STShortiViewController < UIViewController
-	def init
-		if super
-			self.title = 'My label'
+	def initWithTitleAndShorti(title, shorti: shorti)
+		if init
+			self.title = title
+			puts shorti
 		end
 		self
 	end
