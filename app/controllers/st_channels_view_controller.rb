@@ -1,7 +1,8 @@
 class STChannelViewController < UIViewController
 	def init
 		if super
-			self.title = 'Shorti Channel'
+			self.title	= 'Shorti Channel'
+			@shortis	= []
 		end
 		self
 	end
@@ -12,10 +13,8 @@ class STChannelViewController < UIViewController
 	end
 
 	def viewDidLoad
-		view.label.when_tapped do
-			controller = STOptionsViewController.alloc.init
-			navigationController.pushViewController(controller, animated:true)
-		end
+		view.dataSource	= self
+		view.delegate	= self
 
 		MBProgressHUD.showHUDAddedTo(view, animated:true)
 
@@ -27,14 +26,30 @@ class STChannelViewController < UIViewController
 				@alert = UIAlertView.alloc.initWithTitle('Could not load channel' , message:'Try choosing a different channel from the settings.', delegate:nil, cancelButtonTitle:nil, otherButtonTitles:nil)
 				@alert.show
 			else
-				data = response[:data]
-
-				self.title = data['channel']['title']
-				shorti = data['channel']['shortis'].first['shorti']
-				view.label.text = shorti['title']
+				channel		= response[:data]['channel']
+				self.title	= channel['title']
+				@shortis	= channel['shortis'].map { |info| info['shorti'] }
+				view.reloadData
 			end
 
 			MBProgressHUD.hideHUDForView(view, animated:true)
 		end.weak!)
+	end
+
+	def tableView(view, numberOfRowsInSection:section)
+		@shortis.count
+	end
+
+	def tableView(view, cellForRowAtIndexPath:indexPath)
+		@reuseIdentifier ||= 'STChannelCell'
+		cell = view.dequeueReusableCellWithIdentifier(@reuseIdentifier) || UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier:@reuseIdentifier)
+		cell.textLabel.text = @shortis[indexPath.row]['title']
+		cell
+	end
+
+	def tableView(view, didSelectRowAtIndexPath:indexPath)
+		view.deselectRowAtIndexPath(indexPath, animated:true)
+		controller = STOptionsViewController.alloc.init
+		navigationController.pushViewController(controller, animated:true)
 	end
 end
