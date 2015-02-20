@@ -1,4 +1,4 @@
-class STFrontView < UIView
+class STChannelView < UIView
 	attr_reader :label
 
 	def initWithFrame(rect)

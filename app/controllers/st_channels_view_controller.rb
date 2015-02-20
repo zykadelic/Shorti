@@ -1,4 +1,4 @@
-class STFrontViewController < UIViewController
+class STChannelViewController < UIViewController
 	def init
 		if super
 			self.title = 'Shorti Channel'
@@ -8,7 +8,7 @@ class STFrontViewController < UIViewController
 
 	def loadView
 		# The rect here must fill the entire screen
-		self.view = STFrontView.alloc.initWithFrame(CGRectMake(0, 0, Device.screen.width, Device.screen.height))
+		self.view = STChannelView.alloc.initWithFrame(CGRectMake(0, 0, Device.screen.width, Device.screen.height))
 	end
 
 	def viewDidLoad
