@@ -1,4 +1,4 @@
-class STOptionsView < UIView
+class STShortiView < UIView
 	def initWithFrame(rect)
 		if super
 			self.backgroundColor = UIColor.whiteColor
