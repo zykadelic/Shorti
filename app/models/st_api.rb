@@ -12,6 +12,10 @@ class STAPI
 		@currentChannel ||= currentChannelFromSettings
 	end
 
+	def self.currentChannel=(channel)
+		@currentChannel = channel
+	end
+
 	def self.currentChannelFromSettings
 		default = 'dGtvt0Y' # FIXME Add this to some sort of configatron
 		return NSUserDefaults.standardUserDefaults['channel'] || default
