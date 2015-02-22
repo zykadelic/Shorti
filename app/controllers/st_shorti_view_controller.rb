@@ -2,12 +2,12 @@ class STShortiViewController < UIViewController
 	def initWithTitleAndShorti(title, shorti: shorti)
 		if init
 			self.title = title
-			puts shorti
+			@shorti = shorti
 		end
 		self
 	end
 
 	def loadView
-		self.view = STShortiView.alloc.initWithFrame(CGRectMake(0, 0, Device.screen.width, Device.screen.height))
+		self.view = STShortiView.alloc.initWithShorti(@shorti)
 	end
 end
