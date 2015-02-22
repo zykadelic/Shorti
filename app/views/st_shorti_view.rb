@@ -5,8 +5,11 @@ class STShortiView < UIView
 
 			contentView = UIView.alloc.initWithFrame(App.delegate.navigationViewRect)
 
+			marginTop = 0 # FIXME Is there a better way to do this?
+
 			title		= titleLabel(shorti['title'])
 			titleFrame	= title.frame
+			marginTop	+= titleFrame.size.height
 			contentView.addSubview(title)
 
 			contentView.addSubview(title)
@@ -14,9 +17,19 @@ class STShortiView < UIView
 
 			body				= bodyLabel(shorti['body'])
 			bodyFrame			= body.frame
-			bodyFrame.origin	= CGPointMake(bodyFrame.origin.x, bodyFrame.origin.y + titleFrame.size.height + 10)
+			marginTop			+= 10
+			bodyFrame.origin	= CGPointMake(bodyFrame.origin.x, bodyFrame.origin.y + marginTop)
+			marginTop			+= bodyFrame.size.height
 			body.frame			= bodyFrame
 			contentView.addSubview(body)
+
+			thumbnail				= thumbnailView(shorti['thumbnail'])
+			thumbnailFrame			= thumbnail.frame
+			marginTop				+= 10
+			thumbnailFrame.origin	= CGPointMake(thumbnailFrame.origin.x, thumbnailFrame.origin.y + marginTop)
+			marginTop				+= thumbnailFrame.size.height
+			thumbnail.frame			= thumbnailFrame
+			contentView.addSubview(thumbnail)
 		end
 		self
 	end
@@ -41,5 +54,13 @@ class STShortiView < UIView
 		# Set the entire frame with a position & a size
 		label.frame = CGRectMake(0, 0, size.width, size.height)
 		label
+	end
+
+	def thumbnailView(urlString)
+		imageURL	= NSURL.URLWithString(urlString)
+		placeholder	= UIImage.imageNamed('Shorti-thumbnail-placeholder.png')
+		imageView	= AsyncImageView.alloc.initWithImage(placeholder)
+		imageView.imageURL = imageURL
+		return imageView
 	end
 end
