@@ -39,7 +39,7 @@ class STShortiView < UIView
 		label.text		= title
 		label.textColor	= UIColor.blackColor
 		label.sizeToFit
-		label
+		return label
 	end
 
 	def bodyLabel(body)
@@ -53,7 +53,7 @@ class STShortiView < UIView
 		size = label.sizeThatFits(CGSizeMake(bounds.size.width, Float::MAX))
 		# Set the entire frame with a position & a size
 		label.frame = CGRectMake(0, 0, size.width, size.height)
-		label
+		return label
 	end
 
 	def thumbnailView(urlString)
