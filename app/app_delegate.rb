@@ -5,6 +5,8 @@ class AppDelegate
 		@window.rootViewController	= navigationController
 		@window.makeKeyAndVisible
 
+		application.setStatusBarStyle(UIStatusBarStyleLightContent, animated:true)
+
 		STHTTPSessionManager.setup! # setup singleton class
 
 		STAPI.updateCurrentChannel!
