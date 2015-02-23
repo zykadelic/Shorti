@@ -14,6 +14,7 @@ end
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Shorti Channel'
+  app.version = '0.1'
 
   app.info_plist['UIViewControllerBasedStatusBarAppearance'] = false
 
