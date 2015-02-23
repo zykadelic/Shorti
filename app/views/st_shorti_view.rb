@@ -15,13 +15,12 @@ class STShortiView < UIView
 			# marginTop	+= titleFrame.size.height
 			# contentView.addSubview(title)
 
-			body				= bodyLabel(shorti['body'])
+			body				= bodyLabel(shorti['body'], view: contentView)
 			bodyFrame			= body.frame
 			marginTop			+= 16
 			bodyFrame.origin	= CGPointMake(bodyFrame.origin.x, bodyFrame.origin.y + marginTop)
 			marginTop			+= bodyFrame.size.height
 			body.frame			= bodyFrame
-			contentView.addSubview(body)
 
 			thumbnail				= thumbnailView(shorti['thumbnail'])
 			thumbnailFrame			= thumbnail.frame
@@ -47,12 +46,20 @@ class STShortiView < UIView
 		label.text			= body
 		label.textColor		= UIColor.colorWithHue(0.5861111111111111, saturation: 0.7, brightness: 0.8, alpha: 1)
 		label.numberOfLines	= 0
-
 		label.sizeToFit
+		return label
+	end
+
+	def bodyLabel(body, view: view)
+		label = bodyLabel(body)
+
 		# Given maximum allowable size, how big do you need to be to fit?
-		size = label.sizeThatFits(CGSizeMake(bounds.size.width, Float::MAX))
+		size = label.sizeThatFits(CGSizeMake(view.frame.size.width, Float::MAX))
+
 		# Set the entire frame with a position & a size
 		label.frame = CGRectMake(0, 0, size.width, size.height)
+
+		view.addSubview(label)
 		return label
 	end
 
