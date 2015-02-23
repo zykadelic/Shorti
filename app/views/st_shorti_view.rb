@@ -8,10 +8,10 @@ class STShortiView < UIView
 
 			marginTop = 0 # FIXME Is there a better way to do this?
 
-			title		= titleLabel(shorti['title'])
-			titleFrame	= title.frame
-			marginTop	+= titleFrame.size.height
-			contentView.addSubview(title)
+			# title		= titleLabel(shorti['title'])
+			# titleFrame	= title.frame
+			# marginTop	+= titleFrame.size.height
+			# contentView.addSubview(title)
 
 			body				= bodyLabel(shorti['body'])
 			bodyFrame			= body.frame

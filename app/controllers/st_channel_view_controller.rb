@@ -65,7 +65,9 @@ class STChannelViewController < UIViewController
 
 	def tableView(view, didSelectRowAtIndexPath: indexPath)
 		view.deselectRowAtIndexPath(indexPath, animated: true)
-		controller = STShortiViewController.alloc.initWithTitleAndShorti(title, shorti: @shortis[indexPath.row])
+
+		shorti		= @shortis[indexPath.row]
+		controller	= STShortiViewController.alloc.initWithTitleAndShorti(shorti['title'], shorti: shorti)
 		navigationController.pushViewController(controller, animated: true)
 	end
 
