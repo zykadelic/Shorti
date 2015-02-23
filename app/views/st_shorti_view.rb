@@ -4,6 +4,7 @@ class STShortiView < UIView
 			self.backgroundColor = UIColor.whiteColor
 
 			contentView = UIView.alloc.initWithFrame(App.delegate.navigationViewRect)
+			addSubview(contentView)
 
 			marginTop = 0 # FIXME Is there a better way to do this?
 
@@ -11,9 +12,6 @@ class STShortiView < UIView
 			titleFrame	= title.frame
 			marginTop	+= titleFrame.size.height
 			contentView.addSubview(title)
-
-			contentView.addSubview(title)
-			addSubview(contentView)
 
 			body				= bodyLabel(shorti['body'])
 			bodyFrame			= body.frame
