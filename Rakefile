@@ -17,6 +17,7 @@ Motion::Project::App.setup do |app|
   app.version = '0.1'
 
   app.interface_orientations = [:portrait]
+  app.status_bar_style = :light_content
   app.info_plist['UIViewControllerBasedStatusBarAppearance'] = false
 
   app.pods do
