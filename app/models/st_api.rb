@@ -8,6 +8,15 @@ class STAPI
 		end)
 	end
 
+	def self.updateCurrentChannel!
+		if currentChannel.eql? currentChannelFromSettings
+			false
+		else
+			self.currentChannel = currentChannelFromSettings
+			true
+		end
+	end
+
 	def self.currentChannel
 		@currentChannel ||= currentChannelFromSettings
 	end

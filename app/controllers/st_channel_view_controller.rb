@@ -15,7 +15,13 @@ class STChannelViewController < UIViewController
 	def viewDidLoad
 		view.dataSource	= self
 		view.delegate	= self
+		
+		NSNotificationCenter.defaultCenter.addObserver(self, selector: :reloadChannel, name: UIApplicationWillEnterForegroundNotification, object: nil)
+		loadChannel
+	end
 
+	def loadChannel
+		@alert.dismiss if @alert
 		MBProgressHUD.showHUDAddedTo(view, animated: true)
 
 		# .weak! in the end of the lambda says that self (the controller) will be a weak reference,
@@ -34,6 +40,10 @@ class STChannelViewController < UIViewController
 
 			MBProgressHUD.hideHUDForView(view, animated: true)
 		end.weak!)
+	end
+
+	def reloadChannel
+		loadChannel if STAPI.updateCurrentChannel!
 	end
 
 	def tableView(view, numberOfRowsInSection: section)
@@ -57,5 +67,10 @@ class STChannelViewController < UIViewController
 		view.deselectRowAtIndexPath(indexPath, animated: true)
 		controller = STShortiViewController.alloc.initWithTitleAndShorti(title, shorti: @shortis[indexPath.row])
 		navigationController.pushViewController(controller, animated: true)
+	end
+
+	def dealloc
+		NSNotificationCenter.defaultCenter.removeObserver(self)
+		super
 	end
 end

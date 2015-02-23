@@ -7,6 +7,7 @@ class AppDelegate
 
 		STHTTPSessionManager.setup! # setup singleton class
 
+		STAPI.updateCurrentChannel!
 		true
 	end
 
