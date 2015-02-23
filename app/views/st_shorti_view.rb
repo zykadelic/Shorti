@@ -3,10 +3,12 @@ class STShortiView < UIView
 		if initWithFrame(CGRectMake(0, 0, Device.screen.width, Device.screen.height))
 			self.backgroundColor = UIColor.whiteColor
 
-			contentView = UIView.alloc.initWithFrame(App.delegate.navigationViewRect)
+			contentView			= UIView.alloc.initWithFrame(App.delegate.navigationViewRect)
+			sideMargins			= 16
+			contentView.frame	= CGRectMake(contentView.frame.origin.x + sideMargins, contentView.frame.origin.y, contentView.frame.size.width - sideMargins * 2, contentView.frame.size.height)
 			addSubview(contentView)
 
-			marginTop = 0 # FIXME Is there a better way to do this?
+			marginTop = 4 # FIXME Is there a better way to do this?
 
 			# title		= titleLabel(shorti['title'])
 			# titleFrame	= title.frame
@@ -15,7 +17,7 @@ class STShortiView < UIView
 
 			body				= bodyLabel(shorti['body'])
 			bodyFrame			= body.frame
-			marginTop			+= 10
+			marginTop			+= 16
 			bodyFrame.origin	= CGPointMake(bodyFrame.origin.x, bodyFrame.origin.y + marginTop)
 			marginTop			+= bodyFrame.size.height
 			body.frame			= bodyFrame
