@@ -45,7 +45,7 @@ class STShortiView < UIView
 	def bodyLabel(body)
 		label				= UILabel.alloc.initWithFrame(CGRectZero)
 		label.text			= body
-		label.textColor		= UIColor.blueColor
+		label.textColor		= UIColor.colorWithHue(0.5861111111111111, saturation: 0.7, brightness: 0.8, alpha: 1)
 		label.numberOfLines	= 0
 
 		label.sizeToFit
