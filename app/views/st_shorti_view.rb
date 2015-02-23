@@ -1,7 +1,7 @@
 class STShortiView < UIView
 	def initWithShorti(shorti)
 		if initWithFrame(CGRectMake(0, 0, Device.screen.width, Device.screen.height))
-			self.backgroundColor = UIColor.whiteColor
+			self.backgroundColor = UIColor.colorWithWhite(0.96, alpha: 1)
 
 			contentView			= UIView.alloc.initWithFrame(App.delegate.navigationViewRect)
 			sideMargins			= 16
