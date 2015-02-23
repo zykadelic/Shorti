@@ -46,6 +46,7 @@ class STShortiView < UIView
 		label.text			= body
 		label.textColor		= UIColor.colorWithHue(0.5861111111111111, saturation: 0.7, brightness: 0.8, alpha: 1)
 		label.numberOfLines	= 0
+		label.font			= UIFont.fontWithName('Helvetica-Light', size: 15)
 		label.sizeToFit
 		return label
 	end
