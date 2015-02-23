@@ -16,6 +16,7 @@ Motion::Project::App.setup do |app|
   app.name = 'Shorti Channel'
   app.version = '0.1'
 
+  app.interface_orientations = [:portrait]
   app.info_plist['UIViewControllerBasedStatusBarAppearance'] = false
 
   app.pods do
